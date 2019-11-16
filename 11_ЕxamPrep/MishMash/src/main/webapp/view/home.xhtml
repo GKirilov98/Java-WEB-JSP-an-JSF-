@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main>
+            <hr class="hr-2 bg-mishmash"/>
+            <div class="text-center mb-3">
+                <h4 class="text-mishmash">Welcome, #{session.getAttribute('username')}!</h4>
+            </div>
+            <hr class="hr-2 bg-mishmash"/>
+            <div class="container">
+                <div class="row mb-4 d-flex justify-content-around ">
+                    <c:forEach var="channel" items="#{homeBean.homeChannelViewModelList}">
+                        <div class="col-md-3 d-flex flex-column text-center pt-4 bg-mishmash">
+                            <h5 class="text-center text-white text-mishmash">#{channel.name}</h5>
+                            <h5 class="text-center text-white text-mishmash">#{channel.type} Channel</h5>
+                            <h5 class="text-center text-white text-mishmash">#{channel.followersCount} Followind</h5>
+                            <h:form>
+                                <h:commandButton action="#{channelDeleteBean.deleteChannel(channel.id)}"
+                                        styleClass="btn bg-mishmash text-white" value="Delete"/>
+                            </h:form>
+
+                            <h:link outcome="channel-details?id=#{channel.id}"
+                                    styleClass="nav-link nav-link-white active" value="Details"/>
+                        </div>
+                    </c:forEach>
+                </div>
+            </div>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

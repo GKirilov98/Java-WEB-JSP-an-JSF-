@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+>
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main>
+            <div class="text-center mb-3">
+                <h4 class="text-white mt-2">Welcome to the arena, #{session.getAttribute("username")}</h4>
+            </div>
+            <hr class="my-3"/>
+            <div class="container">
+                <div class="row mb-4 d-flex justify-content-around">
+<!--                    <c:forEach var="h" items="#{homeBean.viewModels}" >-->
+
+<!--                    <div class="col-md-3 d-flex flex-column text-center mb-3">-->
+<!--                        <h:graphicImage name="img/#{h.heroType}.jpg" styleClass="img-thumb" width="300" height="300"/>-->
+<!--                        <h5 class="text-white text-center">#{h.name}</h5>-->
+<!--                        <h:link styleClass="btn btn-info mb-2" value="Details" outcome="hero-details?id=#{h.id}"/>-->
+<!--                        <h:link styleClass="btn btn-danger" value="Delete"  outcome="hero-delete?id=#{h.id}"/>-->
+<!--                        <h:form>-->
+<!--                            <h:commandLink styleClass="btn btn-danger mb-2 form-control" value="Delete"-->
+<!--                                           action="#{heroDeleteBean.deleteHero(h.id)}" />-->
+<!--                        </h:form>-->
+<!--                    </div>-->
+
+<!--                    </c:forEach>-->
+                </div>
+            </div>
+        </main>
+        <span style="visibility: hidden">...</span>
+    </ui:define>
+</ui:composition>
+</html>

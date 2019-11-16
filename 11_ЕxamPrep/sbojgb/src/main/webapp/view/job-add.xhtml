@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main>
+            <hr class="my-3"/>
+            <h1 class="text-center">Add Job</h1>
+            <hr class="hr-3"/>
+            <h:form class="mx-auto w-15" >
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="sector" class="h3 mb-2" value="Sector" />
+                    </div>
+                    <h:selectOneMenu id="sector" styleClass="form-control" value="#{jobRegisterBean.model.sector}" >
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                        <c:forEach var="s" items="#{jobRegisterBean.jobSectors}">
+                            <f:selectItem itemLabel="#{s}" itemValue="#{s}"  />
+                        </c:forEach>
+                    </h:selectOneMenu>
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="profession" class="h3 mb-2" value="Profession" />
+                    </div>
+                    <h:inputText styleClass="form-control" id="profession"
+                                 name="profession" value="#{jobRegisterBean.model.profession}"/>
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <h:outputLabel for="salary" class="h3 mb-2" value="Salary"/>
+                    </div>
+                    <p:inputNumber  id="salary"
+                                   name="salary"  value="#{jobRegisterBean.model.salary}" />
+                </div>
+                <div class="form-group">
+                    <div class="label-holder d-flex justify-content-center">
+                        <p:outputLabel for="description" styleClass="h3 mb-2" value="Description"/>
+                    </div>
+                    <h:inputTextarea rows="4" styleClass="form-control" id="description" name="description"
+                                     value="#{jobRegisterBean.model.description}"/>
+                </div>
+                <div class="button-holder d-flex justify-content-center">
+                    <h:commandButton styleClass="btn btn-info text-white"
+                                     value="Register" action="#{jobRegisterBean.registerJob}" />
+                </div>
+            </h:form>
+            <hr class="my-3"/>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

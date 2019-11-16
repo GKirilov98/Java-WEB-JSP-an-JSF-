@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main>
+            <hr class="my-2" />
+            <div class="container-fluid">
+                <h2 class="text-center">#{tubeDetailsBean.tubeDetailsViewModel.title}</h2>
+                <div class="row">
+                    <div class="col-md-6 my-5">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="#{tubeDetailsBean.tubeDetailsViewModel.youtubeId}"
+                                    frameborder="0"></iframe>
+                        </div>
+                    </div>
+                    <div class="col-md-6 my-5">
+                        <h1 class="text-center text-info">#{tubeDetailsBean.tubeDetailsViewModel.author}</h1>
+                        <h3 class="text-center text-info">#{tubeDetailsBean.tubeDetailsViewModel.views} Views</h3>
+                        <div class="h5 my-5 text-center">#{tubeDetailsBean.tubeDetailsViewModel.description}</div>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3"/>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

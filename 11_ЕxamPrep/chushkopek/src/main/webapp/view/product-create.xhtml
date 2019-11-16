@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main class="mt-3 mb-5">
+            <h1 class="text-center">Create Product</h1>
+            <hr class="hr-2 bg-dark"/>
+            <h:form styleClass="mx-auto half-width">
+                <div class="form-group">
+                    <h:outputLabel for="name" value="Name"/>
+                    <h:inputText styleClass="form-control" id="name" pt:placeholder="Name..." name="name"
+                                 value="#{productCreateBean.model.name}"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel for="price" value="Price"/>
+                    <p:inputNumber styleClass="form-control-range" id="price" pt:placeholder="Price..." name="price"
+                        value="#{productCreateBean.model.price}"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <h:inputTextarea styleClass="form-control" id="description" rows="4"
+                                     pt:placeholder="Description..." name="description"
+                                     value="#{productCreateBean.model.description}"/>
+                </div>
+                <h4 class="text-center">Product Type</h4>
+                <hr class="hr-2 bg-dark half-width mt-4"/>
+                <div class="product-type-holder mt-4 d-flex justify-content-around">
+                    <h:selectOneRadio value="#{productCreateBean.model.type}">
+                        <c:forEach var="t" items="#{productCreateBean.typesValues}">
+                            <div class="form-check form-check-inline form-check-input">
+                                <f:selectItem itemValue="#{t}" itemLabel="#{t}"/>
+                            </div>
+                        </c:forEach>
+                    </h:selectOneRadio>
+                </div>
+                <hr class="hr-2 bg-dark half-width mt-4"/>
+                <div class="button-holder mt-2 d-flex justify-content-center">
+                    <h:commandButton type="submit" styleClass="btn chushka-bg-color" value="Create"
+                                     action="#{productCreateBean.createProduct}"/>
+                </div>
+            </h:form>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

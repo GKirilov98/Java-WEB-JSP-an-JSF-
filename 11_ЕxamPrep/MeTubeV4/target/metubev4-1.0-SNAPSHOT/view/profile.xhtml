@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+>
+<ui:composition template="templates/base-layout.xhtml">
+    <ui:define name="main-content">
+        <main>
+            <div class="text-center mt-3">
+                <h4 class="text-info text-center">@#{userProfileBean.viewModel.username}</h4>
+                <h4 class="text-info text-center">(#{userProfileBean.viewModel.email})</h4>
+            </div>
+            <hr/>
+            <div class="container-fluid">
+                <div class="row d-flex flex-column">
+                    <table class="table table-hover">
+                        <thead class="bg-color-dark">
+                        <tr>
+                            <th scope="col"  style="color: white">#</th>
+                            <th scope="col"  style="color: white">Title</th>
+                            <th scope="col"  style="color: white">Author</th>
+                            <th scope="col"  style="color: white">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="t" items="#{userProfileBean.viewModel.tubes}" varStatus="loop">
+                            <tr>
+                                <th scope="col" >#{loop.count}</th>
+                                <th scope="col">#{t.title}</th>
+                                <th scope="col">#{t.author}</th>
+                                <th scope="col" >
+                                    <ul class="navbar-nav ml-auto">
+                                        <li class="nav-item active col-md-3">
+                                            <h:link outcome="tube-details?id=#{t.id}" styleClass="btn btn-info" value="Details"/>
+                                        </li>
+                                        <li class="nav-item active col-md-3">
+                                            <h:form>
+                                                <h:commandButton type="submit" styleClass="btn btn-danger" value="Delete"
+                                                                 action="#{userProfileBean.deleteTube(t.id)}"/>
+                                            </h:form>
+                                        </li>
+                                    </ul>
+                                </th>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

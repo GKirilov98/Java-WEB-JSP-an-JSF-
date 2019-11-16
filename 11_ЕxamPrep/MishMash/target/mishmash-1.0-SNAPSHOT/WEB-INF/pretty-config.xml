@@ -1,0 +1,42 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+    <url-mapping id="index">
+        <pattern value="/index" />
+        <view-id value="/faces/view/index.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="register">
+        <pattern value="/register" />
+        <view-id value="/faces/view/register.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="login">
+        <pattern value="/login" />
+        <view-id value="/faces/view/login.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="home">
+        <pattern value="/home" />
+        <view-id value="/faces/view/home.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="channel-register">
+        <pattern value="/channels/register" />
+        <view-id value="/faces/view/channel-register.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="channel-details">
+        <pattern value="/channels/details/#{id}" />
+        <view-id value="/faces/view/channel-details.xhtml" />
+    </url-mapping>
+
+    <url-mapping id="job-delete">
+        <pattern value="/jobs/delete/#{id}" />
+        <view-id value="/faces/view/job-delete.xhtml" />
+    </url-mapping>
+
+
+
+</pretty-config>
